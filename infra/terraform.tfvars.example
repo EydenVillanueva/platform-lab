@@ -1,0 +1,2 @@
+# Copy to terraform.tfvars and set your repository (owner/name).
+github_repo = "your-user/platform-lab"

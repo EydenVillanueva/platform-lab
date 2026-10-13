@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: d2
+  namespace: drills
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: d2
+  template:
+    metadata:
+      labels:
+        app: d2
+    spec:
+      containers:
+        - name: app
+          image: launchpad-api:dev
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: REQUIRE_API_KEY
+              value: "true"
+          resources:
+            requests: { cpu: 50m, memory: 64Mi }
+            limits: { memory: 128Mi }

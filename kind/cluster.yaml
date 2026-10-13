@@ -1,0 +1,8 @@
+# One control-plane node and two workers, so you can watch the scheduler spread pods.
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: platform-lab
+nodes:
+  - role: control-plane
+  - role: worker
+  - role: worker

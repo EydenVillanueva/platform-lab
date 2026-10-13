@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: d6
+  namespace: drills
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: d6
+  template:
+    metadata:
+      labels:
+        app: d6
+    spec:
+      containers:
+        - name: app
+          image: launchpad-api:dev
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: STARTUP_ALLOCATE_MB
+              value: "300"
+          resources:
+            requests: { cpu: 50m, memory: 64Mi }
+            limits: { memory: 128Mi }
